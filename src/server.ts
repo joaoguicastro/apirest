@@ -11,7 +11,9 @@ const app = fastify();
 
 // https://localhost:3333/hello
 
-app.register(transactionsRoutes)
+app.register(transactionsRoutes, {
+    prefix: 'transactions'
+})
 
 app.get('/busca', async () => {
     const transactionss = await knex('transactions').select('*')
